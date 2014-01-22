@@ -1,0 +1,125 @@
+
+#section-twitter-button
+{
+	position: relative;
+	left: 50%;
+	top: 300px;
+	width: 300px;
+}
+
+#button-twitter-signin
+{
+	border: 0px;
+	width: 300px;
+	height: 50px;
+	background-color: #72CAED;
+	font-size: 22px;
+	color: white;
+	position: relative;
+	margin-left: -50%;
+}
+
+.tour
+{
+	position: absolute;
+	left: 400px;
+	top: 100px;
+	width: 300px;
+	height: 100px;
+	background-color: lightseagreen;
+}
+
+.tour .list
+{
+	-webkit-transition-delay: 0s, 0s;
+	-webkit-transition-duration: 0s, 0.3s;
+	-webkit-transition-property: visibility, opacity;
+	-webkit-transition-timing-function: ease, ease;
+	box-sizing: border-box;
+	color: rgb(71, 163, 218);
+	display: block;
+	font-family: Lato, Calibri, Arial, sans-serif;
+	font-size: 16px;
+	height: 51px;
+	left: 150px;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	margin-bottom: 0px;
+	margin-left: -128px;
+	margin-right: 0px;
+	margin-top: 0px;
+	opacity: 1;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 10px;
+	pointer-events: auto;
+	position: absolute;
+	text-align: left;
+	text-transform: capitalize;
+	top: 0px;
+	transition-delay: 0s, 0s;
+	transition-duration: 0s, 0.3s;
+	transition-property: visibility, opacity;
+	transition-timing-function: ease, ease;
+	visibility: visible;
+	width: 256px;
+}
+
+.tour .list:after
+{
+	border-bottom-color: rgb(255, 255, 255);
+	border-bottom-style: solid;
+	border-bottom-width: 16px;
+	border-image-outset: 0px;
+	border-image-repeat: stretch;
+	border-image-slice: 100%;
+	border-image-source: none;
+	border-image-width: 1;
+	border-left-color: rgba(0, 0, 0, 0);
+	border-left-style: solid;
+	border-left-width: 16px;
+	border-right-color: rgba(0, 0, 0, 0);
+	border-right-style: solid;
+	border-right-width: 16px;
+	border-top-color: rgba(0, 0, 0, 0);
+	border-top-style: solid;
+	border-top-width: 16px;
+	bottom: 769px;
+	box-sizing: border-box;
+	display: block;
+	height: 32px;
+	left: 128px;
+	margin-bottom: -10px;
+	margin-left: -16px;
+	pointer-events: none;
+	position: absolute;
+	width: 32px;
+}
+
+.tour .list li
+{
+	-webkit-background-clip: border-box;
+	-webkit-background-origin: padding-box;
+	-webkit-background-size: auto;
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: rgb(255, 255, 255);
+	background-image: none;
+	background-origin: padding-box;
+	background-size: auto;
+	box-sizing: border-box;
+	color: rgb(71, 163, 218);
+	display: block;
+	font-family: Lato, Calibri, Arial, sans-serif;
+	font-size: 16px;
+	height: 41px;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	text-align: left;
+	text-transform: capitalize;
+	visibility: visible;
+	width: 256px;
+}

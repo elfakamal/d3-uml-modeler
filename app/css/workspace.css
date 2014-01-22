@@ -1,0 +1,26 @@
+/*
+    Document   : workspace
+    Created on : Dec 30, 2013, 2:22:50 AM
+    Author     : kamal
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+#workspace-component
+{
+	width: 100%;
+	height: 100%;
+
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+
+
+#workspace-component nav
+{
+	margin-bottom: 0px;
+}
+
+

@@ -1,0 +1,49 @@
+<section id="section-editor" class="center-container">
+	<div id="div-classifier-editor" class="absolute-center">
+
+		<input id="input-text-editor-title" ng-model="model.name" placeholder="ClassifierName"/>
+		<textarea ng-model="model.description" placeholder="Classifier description"></textarea>
+
+		<div id="div-properties-container">
+
+			<div id="div-attributes">
+				<div id="div-properties-title"><span>Attributes</span></div>
+				<div class="spacer h10"></div>
+				<editor element-type-name="property" element-type="7"></editor>
+
+				<div class="spacer h10"></div>
+				<div ng-repeat="property in model.children | propertyTypeFilter:{type: 7}" property="{{property.GUID}}" class="uml-property" property-type="{{property.type}}"></div>
+				<div class="spacer h20"></div>
+			</div>
+
+			<div id="div-constants">
+				<div id="div-properties-title"><span>Constants</span></div>
+				<div class="spacer h10"></div>
+				<editor element-type-name="property" element-type="6"></editor>
+
+				<div class="spacer h10"></div>
+				<div ng-repeat="property in model.children | propertyTypeFilter:{type: 6}" property="{{property.GUID}}" class="uml-property" property-type="{{property.type}}"></div>
+				<div class="spacer h20"></div>
+			</div>
+
+			<div id="div-methods">
+				<div id="div-properties-title"><span>Methods</span></div>
+				<div class="spacer h10"></div>
+				<editor element-type-name="property" element-type="8"></editor>
+
+				<div class="spacer h10"></div>
+				<div ng-repeat="property in model.children | propertyTypeFilter:{type: 8}" property="{{property.GUID}}" class="uml-property" property-type="{{property.type}}"></div>
+				<div class="spacer h20"></div>
+			</div>
+
+			<div class="spacer h10"></div>
+		</div>
+
+		<div id="div-classifier-editor-buttons">
+			<button id="button-cancel" class="editor-button">Cancel</button>
+			<button id="button-save" class="editor-button">Save</button>
+		</div>
+	</div>
+</section>
+
+

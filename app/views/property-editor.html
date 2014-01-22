@@ -1,0 +1,26 @@
+<div id="div-new-property">
+	<div id="div-input-new-porperty">
+		<input id="input-new-property" ng-model="newPropertyName" type="text" placeholder="propertyName"/>
+	</div>
+	<div id="div-select-controls">
+		<div ng-class="{'hasArrow': newPropertyUmlType !== 'other'}">
+			<select ng-model="newPropertyUmlType" ng-show="newPropertyUmlType !== 'other'" ng-options="primitiveType for primitiveType in primitiveTypes">
+				<option value="">Type</option>
+			</select>
+			<!-- <input id="input-new-property-primitive-type" ng-show="newPropertyUmlType === 'other'" ng-model="newPropertyUmlType" type="text" placeholder="Type"/> -->
+		</div>
+
+<!-- 		<div>
+			<select ng-model="newPropertyElementType">
+				<option value="">Kind</option>
+				<option value="6">Constant</option>
+				<option value="7">Attribute</option>
+				<option value="8">Method</option>
+			</select>
+		</div> -->
+
+	</div>
+	<div id="div-button-add-porperty">
+		<button id="button-add-property"></button>
+	</div>
+</div>

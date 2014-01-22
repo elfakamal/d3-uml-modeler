@@ -1,0 +1,10 @@
+<div class="spacer h20"></div>
+<div class="component-title">Uml Model</div>
+<ul id="ul-uml-model-elements">
+	<li ng-repeat="element in children" ng-click="addElementClick(element)" ng-class="{listHeader:element.type === '-'}">
+		<span class="item-name">
+			<span ng-hide="element.type === '-'" id="span-icon" class="item-icon glyphicon glyphicon-th-large"></span>
+			<span id="span-name">{{element.name}}</span>
+		</span>
+	</li>
+</ul>

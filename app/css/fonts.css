@@ -1,0 +1,80 @@
+/*
+    Document   : fonts
+    Created on : Nov 3, 2013, 3:24:42 PM
+    Author     : kamal
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+@font-face
+{
+	font-family: 'Titillium Web';
+	font-style: normal;
+	font-weight: 200;
+	src: local('Titillium WebThin'), local('TitilliumWeb-Thin'), url(../fonts/titillium-web/anMUvcNT0H1YN4FII8wpr3XqdloEk0Ij5qwGW4qO9RM.woff) format('woff');
+}
+
+@font-face
+{
+	font-family: 'Titillium Web';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(../fonts/titillium-web/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
+
+@font-face
+{
+	font-family: 'Titillium Web';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Titillium Web'), local('TitilliumWeb-Regular'), url(../fonts/titillium-web/7XUFZ5tgS-tD6QamInJTcdGU7DQ8I6RFMlK0vgclk7w.woff) format('woff');
+}
+
+@font-face
+{
+	font-family: 'Titillium Web';
+	font-style: normal;
+	font-weight: 600;
+	src: local('Titillium WebSemiBold'), local('TitilliumWeb-SemiBold'), url(../fonts/titillium-web/anMUvcNT0H1YN4FII8wprx7IBmrqA5IG9z8WNe77b9o.woff) format('woff');
+}
+
+@font-face
+{
+	font-family: 'Titillium Web';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Titillium WebBold'), local('TitilliumWeb-Bold'), url(../fonts/titillium-web/anMUvcNT0H1YN4FII8wpr0bathaSTBR2c4i13_wzlb0.woff) format('woff');
+}
+
+
+@font-face
+{
+	font-family: 'Titillium Web';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Titillium WebBold'), local('TitilliumWeb-Bold'), url(../fonts/titillium-web/anMUvcNT0H1YN4FII8wpr0bathaSTBR2c4i13_wzlb0.woff) format('woff');
+}
+
+@font-face
+{
+	font-family: 'Entypo';
+	src: url('../fonts/entypo/entypo.eot'),
+		url('../fonts/entypo/entypo.woff') format('woff'),
+		url('../fonts/entypo/entypo.ttf') format('truetype'),
+		url('../fonts/entypo/entypo.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face
+{
+	font-family: 'Entypo Social';
+	src: url('../fonts/entypo-social/entypo-social.eot'),
+		url('../fonts/entypo-social/entypo-social.woff') format('woff'),
+		url('../fonts/entypo-social/entypo-social.ttf') format('truetype'),
+		url('../fonts/entypo-social/entypo-social.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+

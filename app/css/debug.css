@@ -1,0 +1,21 @@
+/*
+    Document   : debug
+    Created on : Nov 20, 2013, 7:32:22 PM
+    Author     : kamal
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+#middle-container
+{
+	background-color: bisque;
+}
+
+aside#aside-side-pane
+{
+	background-color: turquoise;
+}
+
+
+

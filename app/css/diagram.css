@@ -1,0 +1,28 @@
+/*
+    Document   : diagram
+    Created on : Dec 30, 2013, 1:06:16 AM
+    Author     : kamal
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+.grid line {
+	stroke: black;
+	stroke-width: .25px;
+	stroke-dasharray: .5 3;
+	/*stroke-opacity: .9;*/
+}
+
+
+.diagram-bg
+{
+	fill: #fcfcfc;
+}
+
+
+.selector
+{
+	fill: yellowgreen;
+}
+

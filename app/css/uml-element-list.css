@@ -1,0 +1,48 @@
+/*
+    Document   : uml-element-list
+    Created on : Jan 14, 2014, 7:11:11 AM
+    Author     : kamal
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+
+#section-element-list-controller
+{
+	position: absolute;
+	height: 50px;
+	text-align: center;
+	left: 50%;
+}
+
+
+#section-uml-model-list ul li
+{
+	float: left;
+	margin-right: 1px;
+}
+
+.button-element
+{
+	margin-bottom: 1px;
+	border: 0px;
+
+	width: 50px;
+	height: 50px;
+
+	background-color: #F0F0F0;
+	font-size: 18px;
+	color: #36A9E0;
+}
+
+.span-separator
+{
+	margin-top: 2px;
+	margin-bottom: 2px;
+
+	height: 0px;
+	width: 50px;
+
+	border-top: 1px solid #000;
+}

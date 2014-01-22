@@ -1,0 +1,16 @@
+<ul>
+	<li ng-repeat="element in children" ng-click="addElementClick(element)" ng-class="{listHeader:element.type === '-'}">
+		<span ng-hide="element.type !== '-'" class="span-separator"></span>
+		<button title="{{element.name}}" ng-hide="element.type === '-'" class="button-element">
+			<span ng-show="element.type === 1"
+						id="span-icon"
+						class="glyphicon glyphicon-th-large"></span>
+			<span ng-show="element.type === 4"
+						id="span-icon"
+						class="glyphicon glyphicon-list-alt"></span>
+			<span ng-show="element.type === 5"
+						id="span-icon"
+						class="glyphicon glyphicon-stop"></span>
+		</button>
+	</li>
+</ul>

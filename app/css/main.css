@@ -1,0 +1,154 @@
+/*
+    Document   : main
+    Created on : Oct 14, 2013, 4:14:38 PM
+    Author     : kamal
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+*,
+*:after,
+*:before
+{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+html, body
+{
+	margin: 0px;
+	height: 100%;
+
+	font-family: "Titillium Web", sans-serif !important;
+
+	overflow: hidden;
+}
+
+body
+{
+	position: relative;
+}
+
+#section-uml-modeler
+{
+	width: 100%;
+	height: 100%;
+}
+
+#middle-container
+{
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.spacer.h20
+{
+	height: 20px;
+}
+
+.spacer,
+.spacer.h10
+{
+	height: 10px;
+}
+
+.overlay{
+	position: fixed !important;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: rgba(255,255,255,0.1); /*dim the background*/
+}
+
+.hidden
+{
+	display: none;
+}
+
+ul
+{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+
+.bg-yellow-green
+{
+	background-color: yellowgreen;
+}
+
+.bg-skyblue
+{
+	background-color: skyblue;
+}
+
+.color-skyblue
+{
+	color: skyblue;
+}
+
+
+.fs10
+{
+	font-size: 10px;
+}
+
+
+
+button.d3-button
+{
+	border: 0px;
+	/*border-bottom: 1px solid #eeeeee !important;*/
+
+	height: 50px;
+	width: 45%;
+
+	font-family: "Titillium Web", sans-serif;
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 22px;
+
+	color: white;
+	cursor: pointer;
+
+	padding: 5px;
+}
+
+button.d3-button.save
+{
+	background-color: yellowgreen;
+}
+
+button.d3-button.cancel
+{
+	background-color: skyblue;
+}
+
+.center-container
+{
+	position: relative;
+}
+
+.absolute-center
+{
+	overflow: auto;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+
+
+
