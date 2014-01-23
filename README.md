@@ -1,4 +1,4 @@
 D3 UML Modeler
 ==============
 
-A UML Modeling tool
+A UML Modeling tool (work in progress)
