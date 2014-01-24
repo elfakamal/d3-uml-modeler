@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module('d3-uml-modeler.uml-workspace')
-	.factory('WorkspaceModel', ["UmlModelAbstractFactory", "Constants", "BaseModelElement", "_",
+	.factory('WorkspaceModelClass', ["UmlModelAbstractFactory", "Constants", "BaseModelElement", "_",
 		function(UmlModelAbstractFactory, Constants, BaseModelElement, _)
 		{
 			return BaseModelElement.extend({

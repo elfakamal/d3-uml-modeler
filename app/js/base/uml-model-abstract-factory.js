@@ -11,6 +11,30 @@ angular.module('d3-uml-modeler.uml-abstract-factory')
 		return {
 
 			/**
+			 * creates the model element based on the modelJSON object.
+			 * it recursively creates the children.
+			 */
+			createModelHierarchy: function(modelJSON)
+			{
+				if( typeof modelJSON === 'undefined' || modelJSON === null )
+					throw new Error("modelJSON is undefined/null");
+
+				if(!_.has(modelJSON, "GUID"))
+					throw new Error("modelJSON is not valid");
+
+				var modelElement = this.createUmlModelElement(modelJSON.type, _.omit(modelJSON, "children"));
+
+				if(_.has(modelJSON, "children")) {
+					_.each(modelJSON.children, function(value, key, list) {
+						var modelValue = this.createModelHierarchy(value);
+						modelElement.addElement(modelValue);
+					}, this);
+				}
+
+				return modelElement;
+			},
+
+			/**
 			 * Creates abstractly an instance that belongs to the type passed
 			 * in argument.
 			 */

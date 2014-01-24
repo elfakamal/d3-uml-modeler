@@ -23,9 +23,30 @@
 			<section id="section-uml-model-list" uml-component="uml-model-list"></section>
 		</section>
 
-		<section id="section-twitter-button" ng-controller="LoginController" ng-show='model.uid==""'>
-				<button id="button-twitter-signin" ng-click="socialLogin('twitter')">Sign in with Twitter</button>
+		<section id="section-global-control">
+			<div id="div-sync-button">
+				<button id="button-sync" ng-click="sync()">Sync</button>
+			</div>
+			<div id="div-social-account">
+				<button id="button-social-account"><span id="span-profile-image">
+					<img id="img-profile-image" src="{{userPicture}}"/>
+  				</span>{{username}}</button>
+			</div>
 		</section>
+
+
+
+		<section id="section-first-modal" ng-controller="LoginController" ng-show="model.uid=='' || model.uid==null" class="center-container">
+			<section id="section-twitter-button" class="absolute-center">
+				<div id="div-app-name-1">UML Modeler</div>
+				<div id="div-app-name-2">UML Modeler</div>
+				<div id="div-app-name-3">UML Modeler</div>
+
+				<button id="button-twitter-signin" ng-click="socialLogin('twitter')">Sign in with Twitter</button>
+		  </section>
+	  </section>
+
+
 
 		<div id="workspace-component">
 			<!--<workspace-navbar></workspace-navbar>-->
@@ -44,6 +65,7 @@
 			</ul>
 		</section>
  -->
+
 	</section>
 </section>
 <!--<footer id="footer">footer</footer>-->

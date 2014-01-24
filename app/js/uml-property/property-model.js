@@ -23,6 +23,13 @@ angular.module('d3-uml-modeler.uml-property')
 			addProperty: function(elementType, options)
 			{
 				return this.createElement(elementType, options);
+			},
+
+			getFields: function()
+			{
+				var fields = BaseModelElement.prototype.getFields.call(this);
+				fields.push("propertyType");
+				return fields;
 			}
 
 		});
