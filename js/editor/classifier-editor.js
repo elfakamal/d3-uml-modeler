@@ -27,6 +27,7 @@ angular.module("d3-uml-modeler.editor")
 					this.$element.find("#button-add-property").bind("click", angular.bind(this, this.onAddPropertyClick));
 					this.$element.find("#button-save").bind("click", angular.bind(this, this.onEditorSave));
 
+					//this event comes from the property editor.
 					this.$scope.$on("add-property", this.onPropertyAdded());
 				},
 

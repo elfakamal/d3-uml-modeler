@@ -20,14 +20,23 @@ angular.module('d3-uml-modeler.base')
 					this.initElements();
 				},
 
+				getFields: function()
+				{
+					return ["GUID", "name", "type", "description", "count"];
+				},
+
+				/**
+				 * 
+				 *
+				 */
 				toJSON: function()
 				{
-					var keys = ["GUID", "name", "type", "description", "count"];
-					var jsonElement = _.pick(this, keys);
-					jsonElement.children = {};
+					var jsonElement = _.pick(this, this.getFields());
 
 					if(this.children != null)
 					{
+						jsonElement.children = {};
+						
 						_.each(this.children, function(child){
 							jsonElement.children[child.GUID] = child.toJSON();
 						});

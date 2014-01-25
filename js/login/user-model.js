@@ -5,22 +5,34 @@ angular.module('d3-uml-modeler.login')
 		function(Constants, _)
 		{
 			return Class.extend({
-				uid : "", //A unique id combining the provider and id, intended as the unique key for user data (string).
-				displayName : "", //The user's display name (string).
+				//A unique id combining the provider and id, intended as the unique key for user data (string).
+				uid : "", 
+				
+				//The user's display name (string).
+				displayName : "", 
 
-				username : "", //The user's Twitter username (string).
-				id : "", //The user's Twitter id (string).
-				accessToken : "", //The Twitter access token (string).
-				accessTokenSecret : "", //The Twitter access token secret (string).
+				//The user's Twitter username (string).
+				username : "", 
+				
+				//The user's Twitter id (string).
+				id : "", 
+				
+				//The Twitter access token (string).
+				accessToken : "", 
+				
+				//The Twitter access token secret (string).
+				accessTokenSecret : "",
 
-				firebaseAuthToken : "", //The Firebase authentication token for this session (string).
-				provider : "", //The authentication method used, in this case: 'twitter' (string).
+				//The Firebase authentication token for this session (string).
+				firebaseAuthToken : "",
+				
+				//The authentication method used, in this case: 'twitter' (string).
+				provider : "", 
 
-				thirdPartyUserData : "", //User account data returned by Twitter (object).
+				//User account data returned by Twitter (object).
+				thirdPartyUserData : "",
 
-
-				save: function()
-				{
+				diagrams: {
 					
 				}
 

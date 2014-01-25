@@ -24,6 +24,7 @@ angular.module('d3-uml-modeler.constants')
 	},
 
 	ELEMENT_TYPES_TO_NAMES: {
+		0: "Workspace",
 		//diagrams
 		1: "Class Diagram",
 		2: "Use Case Diagram",
@@ -40,6 +41,12 @@ angular.module('d3-uml-modeler.constants')
 		10: "Generalization",
 		11: "Aggregation",
 		12: "Composition"
+	},
+
+	WORKSPACE: {
+		TYPES: {
+			NORMAL: 0
+		}
 	},
 
 	/**

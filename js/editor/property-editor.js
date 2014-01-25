@@ -34,6 +34,7 @@ angular.module("d3-uml-modeler.editor")
 						newPropertyName: this.$scope.newPropertyName
 					};
 
+					//this event is emitted for the classifier editor.
 					this.$scope.$emit("add-property", data);
 
 					var self = this;
