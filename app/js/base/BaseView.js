@@ -157,6 +157,4 @@ angular.module("d3-uml-modeler.view")
 				this.svgNode.remove();
 				this.svgNode = null;
 			}
-
-		});
-	}]);
+		});}]);

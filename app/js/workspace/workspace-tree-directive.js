@@ -1,8 +1,6 @@
 "use strict";
 
 
-
-
 angular.module('d3-uml-modeler.uml-workspace')
 	.directive('workspaceTreeItem', ["$compile",
 	function($compile) {

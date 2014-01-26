@@ -14,11 +14,11 @@ angular.module('d3-uml-modeler.editor')
 					return "views/" + attributes["elementTypeName"] + "-editor.html";
 				},
 
-				controller: function($scope, $element, $attrs)
+				controller: ["$scope", "$element", "$attrs", function($scope, $element, $attrs)
 				{
 					if($attrs.elementTypeName == "property")
 						$scope.primitiveTypes = _.values(Constants.PROPERTY.PRIMITIVE_TYPES);
-				},
+				}],
 
 				link: function($scope, $element, $attrs)
 				{

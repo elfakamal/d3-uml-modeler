@@ -2,10 +2,10 @@
 
 var app = angular.module('d3-uml-modeler.menu');
 
-app.controller('MenuCtrl', function ($scope)
+app.controller('MenuCtrl', ['$scope', function ($scope)
 {
 	$scope.items = [
 		{name: "Undo",link: "#"},
 		{name: "Redo",link: "#"}
 	];
-});
+}]);

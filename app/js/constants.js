@@ -133,22 +133,23 @@ angular.module('d3-uml-modeler.constants')
 	/**
 	 *
 	 */
-	ELEMENT_LIST: [
-		{
+	ELEMENT_LIST: [{
 			name: "Diagrams",
-			children: [
-				{name: "Class Diagram", type:function(){return this.DIAGRAM.TYPES.CLASS_DIAGRAM;}},
+			children: [{
+				name: "Class Diagram", type:function(){return this.DIAGRAM.TYPES.CLASS_DIAGRAM;}
+			}
 //				{name: "Use Case Diagram", type:function(){return this.DIAGRAM.TYPES.USE_CASE_DIAGRAM;}},
 //				{name: "State Diagram", type:function(){return this.DIAGRAM.TYPES.STATE_DIAGRAM;}}
 			]
-		},
-		{
+		}, {
 			name: "Classifiers",
-			children: [
-				{name: "Class", type:function(){return this.CLASSIFIER.TYPES.CLASS;}},
-				{name: "Interface", type:function(){return this.CLASSIFIER.TYPES.INTERFACE;}}
+			children: [{
+					name: "Class", type:function(){return this.CLASSIFIER.TYPES.CLASS;}
+				}, {
+					name: "Interface", type:function(){return this.CLASSIFIER.TYPES.INTERFACE;}
+				}
 			]
-		},
+		}
 //		{
 //			name: "Properties",
 //			children: [

@@ -50,7 +50,8 @@ angular.module('d3-uml-modeler.run', [
 		'd3-uml-modeler.uml-classifier',
 		'd3-uml-modeler.uml-property'
 	])
-	.run(function(Constants, UmlModelAbstractFactory, WorkspaceModelClass, DiagramModelClass, ClassifierModelClass, PropertyModelClass) {
+	.run(["Constants","UmlModelAbstractFactory","WorkspaceModelClass","DiagramModelClass","ClassifierModelClass","PropertyModelClass",
+	function(Constants, UmlModelAbstractFactory, WorkspaceModelClass, DiagramModelClass, ClassifierModelClass, PropertyModelClass) {
 		
 		UmlModelAbstractFactory.registerUmlModelElementClass(Constants.WORKSPACE.TYPES.NORMAL, WorkspaceModelClass);
 		UmlModelAbstractFactory.registerUmlModelElementClass(Constants.DIAGRAM.TYPES.CLASS_DIAGRAM, DiagramModelClass);
@@ -61,5 +62,6 @@ angular.module('d3-uml-modeler.run', [
 		UmlModelAbstractFactory.registerUmlModelElementClass(Constants.PROPERTY.TYPES.CONSTANT, PropertyModelClass);
 		UmlModelAbstractFactory.registerUmlModelElementClass(Constants.PROPERTY.TYPES.ATTRIBUTE, PropertyModelClass);
 		UmlModelAbstractFactory.registerUmlModelElementClass(Constants.PROPERTY.TYPES.METHOD, PropertyModelClass);
-	});
+	}]);
+
 

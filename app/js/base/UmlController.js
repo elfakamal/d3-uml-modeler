@@ -1,10 +1,5 @@
 'use strict';
 
-/**
- *
- * @type controller
- */
-
 angular.module("d3-uml-modeler.base")
 	.factory("UmlController", ["BaseController", "Notifications",
 		function(BaseController, Notifications){
