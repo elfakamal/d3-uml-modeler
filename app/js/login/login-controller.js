@@ -39,7 +39,7 @@ angular.module('d3-uml-modeler.login')
 				onLoginError: function(error)
 				{
 					// an error occurred while attempting login
-					debugger;
+					//debugger;
 					this.auth.$logout();
 					this.isPending = false;
 					console.log(error);
@@ -47,7 +47,7 @@ angular.module('d3-uml-modeler.login')
 
 				onLogout: function()
 				{
-					debugger;
+					//debugger;
 					
 					this.isPending = false;
 					for(var key in this.$scope.model) this.$scope.model["uid"] = null;

@@ -13,6 +13,9 @@ angular.module("d3-uml-modeler.uml-classifier")
 			handlersCoordinates					: null,
 			picker											: null,
 
+			/**
+			 * Initializer function for the classifier view.
+			 */
 			init: function($scope, element, config)
 			{
 				BaseView.prototype.init.call(this, $scope, element, config);
@@ -25,15 +28,19 @@ angular.module("d3-uml-modeler.uml-classifier")
 				this.initDragBehaviors();
 			},
 
+			/**
+			 * Initializer function for the picker view.
+			 */
 			initClassifierPicker: function()
 			{
 				this.picker = new ClassifierPicker(this.$scope, this.$el, this.config);
 				this.picker.render();
 				this.picker.hidePicker();
-
-				
 			},
 
+			/**
+			 * Initializer function for the resizer view.
+			 */
 			initResizer: function()
 			{
 				this.classifierResizer = new ClassifierResizer(this.$scope, this.$el, this.config);
@@ -41,6 +48,9 @@ angular.module("d3-uml-modeler.uml-classifier")
 				this.classifierResizer.addEventListener("resize-done-" + this.$scope.model.GUID, this.onClassifeierResizerDone, this);
 			},
 
+			/**
+			 * Initialize the classifier's listeners.
+			 */
 			initListeners: function()
 			{
 				//this event comes from the diagram.
@@ -67,31 +77,37 @@ angular.module("d3-uml-modeler.uml-classifier")
 			},
 
 			/**
+			 * this function is the callback of the mousedown on the classifier view.
 			 *
+			 * - it selects only one classifier, if the user don't press control key
+			 * 
+			 * - The "hide-resizer" event allow us to tell the other classifiers 
+			 * to hide their resizers because we are in the process of selecting
+			 * a specific classifier, that's why we are sending the GUID with the 
+			 * event
+			 *
+			 * - it stops the event propagation to the diagram.
+			 *
+			 * - the d3.event.defaultPrevented allow us to prevents selection 
+			 * when dragging the classifier.
+			 *
+			 * - and sends an selection event to the diagram, so it can know
+			 * what classifiers are actually selected.
 			 */
 			onClassifierMouseDown: function()
 			{
-				//Select only one classifier (if the user don't press the control key)
-				//
-				//This event allow us to tell the other classifiers to hide their
-				//resizers because we are in the process of selecting a specific
-				//classifier, that's why we are sending the GUID with the event.
 				if(!d3.event.ctrlKey)
 					this.notifications.notify("hide-resizer", this.$scope.model.GUID);
 
-				//stop the event propagation to the diagram.
 				d3.event.stopPropagation();
-
-				//a little hack to prevent selection when dragging the classifier.
 				if(d3.event.defaultPrevented) return;
-
-				//send an selection event to the diagram, so it can know
-				//what classifiers are actually selected.
 				this.select();
 			},
 
 			/**
-			 *
+			 * thie function allows us to know whether a given rectangle intersects 
+			 * with some this classifier or no. if it does, the classifier 
+			 * is immediately selected.
 			 */
 			selectorHitTest: function(rawSVG, selectorRect)
 			{
@@ -109,6 +125,9 @@ angular.module("d3-uml-modeler.uml-classifier")
 					this.select();
 			},
 
+			/**
+			 * 
+			 */
 			select: function()
 			{
 				this.selected = true;
@@ -126,6 +145,9 @@ angular.module("d3-uml-modeler.uml-classifier")
 				this.picker.showPicker();
 			},
 
+			/**
+			 *
+			 */
 			deselect: function()
 			{
 				this.selected = false;
@@ -138,6 +160,11 @@ angular.module("d3-uml-modeler.uml-classifier")
 				this.notifications.notify("classifier-deselected", this.$scope.model);
 			},
 
+			/**
+			 * This function is called when the user finished resising the classifier,
+			 * it does a bunch of updates on the position, size, and other properties 
+			 * and styles of the different objects composing the classifier.
+			 */
 			onClassifeierResizerDone: function()
 			{
 				var currentX, currentY, newX, newY, newW, newH;
@@ -167,10 +194,14 @@ angular.module("d3-uml-modeler.uml-classifier")
 
 				this.classifierResizer.resetResizer();
 				this.updateBackground();
-				this.updateTitle();
 				this.picker.setClassifierWidth(this.config.width);
+				this.updatePropertiesContainer();
 			},
 
+			/**
+			 * this function hides the classifier including its picker and resizer
+			 * objects, and then deselects it.
+			 */
 			onHideResizer: function(guid)
 			{
 				if(	this.classifierResizer &&
@@ -182,6 +213,9 @@ angular.module("d3-uml-modeler.uml-classifier")
 				}
 			},
 
+			/**
+			 * the callback to the drag move d3 event.
+			 */
 			onDragMove: function(d)
 			{
 				d.x += d3.event.dx;
@@ -191,13 +225,49 @@ angular.module("d3-uml-modeler.uml-classifier")
 					.attr("transform", "translate(" + d.x + "," + d.y + ")");
 			},
 
+			/**
+			 * draws the basic objects of the classifier
+			 */
 			drawBase: function()
 			{
 				this.drawBackground();
 				this.drawTitle();
 				this.drawBody();
+
+				this.updateClassifierSize();
 			},
 
+			updateClassifierSize: function()
+			{
+				if(!_.isEmpty(this.$scope.model.children))
+				{
+					var box = {};
+					box.width = +this.svgNode.select(".classifier-bg").attr("width");
+					box.height = 0;
+
+					var borderTopHeight = 2;
+					var propertyHeight = 20;
+
+					var headerHeight = borderTopHeight + this.config.titleHeight
+					var propertiesHeight = propertyHeight * _.keys(this.$scope.model.children).length;
+
+					box.height = headerHeight + propertiesHeight;
+
+					if(box.height > Constants.CLASSIFIER.VIEW.DEFAULT_HEIGHT)
+					{
+						//do to resize.
+						this.config.height = box.height;
+
+						this.updateBackground();
+						// this.picker.setClassifierWidth(this.config.width);
+						this.updatePropertiesContainer();
+					}
+				}
+			},
+
+			/**
+			 * draws the background rectangle object.
+			 */
 			drawBackground: function()
 			{
 				this.backgroundRect = this.svgNode.append("svg:rect")
@@ -210,37 +280,41 @@ angular.module("d3-uml-modeler.uml-classifier")
 				d3.select(this.$el.parentNode)
 					.attr("data-width", this.config.width)
 					.attr("data-height", this.config.height);
+
+				this.classifierForeignObject = this.svgNode.append("foreignObject")
+					.attr("class", "classifier-foreign-object");
+
+				this.updateClassifierForeignObject();
 			},
 
+			updateClassifierForeignObject: function(){
+				this.svgNode.select(".classifier-foreign-object")
+					.attr("x", 0)
+					.attr("y", 0)
+					.attr("width", this.config.width)
+					.attr("height", this.config.height);
+			},
+
+			/**
+			 * draws the title rectangle and the text.
+			 */
 			drawTitle: function()
 			{
-				var title = this.svgNode.append("svg:g")
-					.attr("class", "classifier-title-container");
+				this.classifierContainerDiv = this.classifierForeignObject.append("xhtml:div")
+					.attr("class", "classifier-title")
+					.style("height", this.config.titleHeight + "px")
+					.style("line-height", this.config.titleHeight + "px");
 
-				title.append("svg:rect")
-					.attr("width", this.config.width)
-					.attr("height", this.config.titleHeight)
-					.attr("class", "classifier-title-bg")
-					.attr("x", 0)
-					.attr("y", 0);
+				var titleTemplate = '<span>{{model.name}}</<span>';
+				var titleElement = angular.element(titleTemplate);
 
-				var titleText = title.append("svg:g")
-					.attr("class", "text-container")
-					.append("svg:text")
-						.text(this.$scope.model.name)
-						.attr("class", "title-text")
-						.attr("text-anchor", "start")
-						.attr("x", 0)
-						.attr("y", 0);
-
-				var bbx = titleText[0][0].getBBox();
-				var x = Math.abs(bbx.x) + this.config.width/2 - bbx.width/2;
-				var y = Math.abs(bbx.y) + this.config.titleHeight/2 - bbx.height/2;
-
-				title.select("g.text-container")
-					.attr("transform", "translate(" + [x, y] + ")");
+				var compiledTemplate = $compile(titleElement)(this.$scope);
+				$(this.classifierContainerDiv[0][0]).append(compiledTemplate[0]);
 			},
 
+			/**
+			 * updates the size of the background (when a resize is done)
+			 */
 			updateBackground: function()
 			{
 				this.svgNode.select("rect.classifier-bg")
@@ -250,54 +324,49 @@ angular.module("d3-uml-modeler.uml-classifier")
 				d3.select(this.$el.parentNode)
 					.attr("data-width", this.config.width)
 					.attr("data-height", this.config.height);
-			},
 
-			updateTitle: function(box)
-			{
-				this.svgNode.select("rect.classifier-title-bg")
+				//TODO: update the classifier foreign object size & the container div.
+				this.classifierForeignObject
 					.attr("width", this.config.width)
-					.attr("height", this.config.titleHeight);
-
-				var titleText = this.svgNode.select("text.title-text");
-				var bbx = titleText[0][0].getBBox();
-
-				var x = Math.abs(bbx.x) + this.config.width/2 - bbx.width/2;
-				var y = Math.abs(bbx.y) + this.config.titleHeight/2 - bbx.height/2;
-
-				this.svgNode.select("g.text-container")
-					.attr("transform", "translate(" + [x, y] + ")");
+					.attr("height", this.config.height);
 			},
 
+			/**
+			 * creates the foreign object that holds the properties.
+			 * creates the property template and compiles it with angular's $compile 
+			 * function, this allow us to keep the binding working on the properties 
+			 * collection.
+			 */
 			drawBody: function()
 			{
-				var propertiesContainer = this.svgNode.append("svg:g")
-					.attr("transform", "translate(" + [0, 0] + ")")
-					.attr("class", "properties-container");
+				this.initPropertiesContainerDiv();
 
-//				var propertyElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
-//				propertyElement.setAttribute("ng-repeat", "property in properties");
-//				propertyElement.setAttribute("property", "");
-//				propertyElement.setAttribute("class", "g-property");
-//				propertyElement.setAttribute("data-name", "{{property.name}}");
-//
-//				var propertyRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-//				propertyRect.setAttribute("x", 0);
-//				propertyRect.setAttribute("y", 0);
-//				propertyRect.setAttribute("width", 20);
-//				propertyRect.setAttribute("height", 20);
-//				propertyRect.setAttribute("style", "fill:yellowgreen");
-//
-//				propertyElement.appendChild(propertyRect);
-//
-////				var propertyTemplate = '<g ng-repeat="property in properties" property class="g-property"><rect x="20" y="20" width="20" height="20" style="fill:yellowgreen"></rect><text>{{property.name}}</text></g>';
-////				var propertyElement = angular.element(propertyTemplate);
-//				var compiledTemplate = $compile(propertyElement)(this.$scope);
-//
-//				debugger;
-//				propertiesContainer[0][0].appendChild(compiledTemplate[0]);
-//
-//				this.$scope.properties["lol"] = {name: "lol"};
-//				this.$scope.properties["cool"] = {name: "cool"};
+				var propertyTemplate = '<div ng-repeat="property in model.children | propertyTypeFilter:{type: 6}" property class="uml-property"></div>';
+				propertyTemplate += '<div ng-repeat="property in model.children | propertyTypeFilter:{type: 7}" property class="uml-property"></div>';
+				propertyTemplate += '<div ng-repeat="property in model.children | propertyTypeFilter:{type: 8}" property class="uml-property"></div>';
+
+				debugger;
+				var propertyElement = angular.element(propertyTemplate);
+
+				var compiledTemplate = $compile(propertyElement)(this.$scope);
+				$(this.propertiesContainerDiv[0][0]).append(compiledTemplate[0]);
+				$(this.propertiesContainerDiv[0][0]).append(compiledTemplate[1]);
+				$(this.propertiesContainerDiv[0][0]).append(compiledTemplate[2]);
+			},
+
+			initPropertiesContainerDiv: function (argument)
+			{
+				this.propertiesContainerDiv = this.classifierForeignObject.append("xhtml:div")
+					.attr("class", "property-container")
+					.style("position", "static");
+
+				this.updatePropertiesContainer();
+			},
+
+			updatePropertiesContainer: function()
+			{
+				$(this.propertiesContainerDiv[0][0])
+					.css("height", this.config.height - this.config.titleHeight);
 			}
 
 		});

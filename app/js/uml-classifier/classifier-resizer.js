@@ -285,8 +285,8 @@ angular.module("d3-uml-modeler.uml-classifier")
 
 			resetResizer: function()
 			{
-				var classifierWidth = this.svgNode.select(".classifier-bg").attr("width");
-				var classifierHeight = this.svgNode.select(".classifier-bg").attr("height");
+				var classifierWidth = this.svgNode.select(".classifier-foreign-object").attr("width");
+				var classifierHeight = this.svgNode.select(".classifier-foreign-object").attr("height");
 
 				this.resizerRect
 					.attr("x", classifierWidth/2)

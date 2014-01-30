@@ -23,6 +23,7 @@ angular.module("d3-uml-modeler.uml-classifier")
 				this.classifierWidth = width;
 				this.updateForeignObject();
 			},
+			
 			getPicker: function()
 			{
 				return this.picker;

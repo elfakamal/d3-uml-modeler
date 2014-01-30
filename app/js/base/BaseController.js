@@ -3,10 +3,6 @@
 /**
  * Base controller for all controllers.
  * Use this as a template for all future controllers
- *
- * Use of Class.js
- *
- * @author tommy[followed by the usual sign]julo.ca
  */
 
 angular.module("d3-uml-modeler.base")
@@ -17,7 +13,7 @@ angular.module("d3-uml-modeler.base")
 
 			/**
 			 * Initialize Base Controller
-			 * @param $scope, current controller scope
+			 * $scope, current controller scope
 			 */
 			init:function(scope)
 			{

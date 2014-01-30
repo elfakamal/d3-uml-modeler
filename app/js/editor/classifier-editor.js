@@ -1,6 +1,5 @@
 "use strict";
 
-
 angular.module("d3-uml-modeler.editor")
 	.factory("ClassifierEditorDirective", [
 		"BaseDirective", "Constants", "Notifications",
@@ -28,38 +27,36 @@ angular.module("d3-uml-modeler.editor")
 					this.$element.find("#button-save").bind("click", angular.bind(this, this.onEditorSave));
 
 					//this event comes from the property editor.
-					this.$scope.$on("add-property", this.onPropertyAdded());
+					this.$scope.$on("add-property", this.addProperty());
+					
+					//this event comes from the property directive.
+					this.$scope.$on("remove-property", this.removeProperty());
 				},
 
-				onPropertyAdded: function()
+				removeProperty: function()
+				{
+					var self = this;
+
+					return function(event, data){
+						//data is the model property sent from the property-directive.
+						self.$scope.model.removeElement(data.GUID);
+					};
+				},
+
+				addProperty: function()
 				{
 					var self = this;
 
 					return function(event, data) {
-						var scope = self.$scope;
-
-						self.$scope.$apply(function() {
-							scope.model.addProperty(
-								data.newPropertyElementType, 
-								{
-									name: data.newPropertyName, 
-									propertyType: data.newPropertyUmlType
-								}
-							);
-						});
+						self.$scope.model.addProperty(
+							data.newPropertyElementType,
+							{
+								name: data.newPropertyName,
+								propertyType: data.newPropertyUmlType
+							}
+						);
 					};
 				},
-
-				// onAddPropertyClick: function()
-				// {
-				// 	var scope = this.$scope;
-				// 	this.$scope.$apply(function(){
-				// 		scope.model.addProperty(scope.newPropertyElementType, {name: scope.newPropertyName});
-				// 		scope.newPropertyName = "";
-				// 		scope.newPropertyElementType = "";
-				// 	});
-				// 	this.$element.find("#input-new-property").focus();
-				// },
 
 				onEditorSave: function()
 				{

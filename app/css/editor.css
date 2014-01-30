@@ -164,7 +164,7 @@
 
 #div-new-property #div-input-new-porperty { width: 50%;}
 #div-new-property #div-select-controls { width: 40%;}
-#div-new-property #div-button-add-porperty { width: 10%;}
+#div-new-property #div-button-action-porperty { width: 10%;}
 
 #div-new-property > div {
 	float: left;
@@ -206,7 +206,8 @@
 }
 
 
-#div-new-property #button-add-property
+#div-new-property #button-add-property,
+#div-new-property #button-save-property
 {
 	border: 0px solid;
 	display: inline-block;
@@ -214,22 +215,31 @@
 	line-height: 0px;
 	float: right;
 	color: rgba(255,255,255,.8);
-	font-weight: bold;
+	
 	background-color: transparent;
 	outline: none;
 }
 
-#div-new-property #button-add-property:hover
+#div-new-property #button-add-property:hover,
+#div-new-property #button-save-property:hover
 {
 	color: rgb(255,255,255);
 }
 
-#div-new-property #button-add-property:before
+#div-new-property #button-add-property:before,
+#div-new-property #button-save-property:before
 {
 	font-family: "Entypo";
-	content: '\2795';
 	font-size: 48px;
 	line-height: 18px;
+}
+
+#div-new-property #button-add-property:before {
+	content: '\2795';
+}
+
+#div-new-property #button-save-property:before {
+	content: '\2713';
 }
 
 .button-edit-property,
@@ -245,7 +255,7 @@
 	color: rgba(255,255,255,.3);
 }
 
-.button-edit-property:before,
+.button-edit-property::before,
 .button-remove-property::before {
 	font-family: "Entypo";
 	line-height: 20px;
@@ -267,7 +277,7 @@
 	color: white;
 }
 
-div.uml-property
+#section-editor div.uml-property
 {
 	background-color: rgba(10,200,200, .5);
 	margin-top: 1px;

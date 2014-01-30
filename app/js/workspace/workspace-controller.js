@@ -44,10 +44,10 @@ angular.module('d3-uml-modeler.uml-workspace')
 
 				initWorkspaceModel: function(rawUser)
 				{
-					// if(typeof rawWorkspaceModel === "undefined" || rawWorkspaceModel === null)
-					// 	throw new Error("rawWorkspaceModel is undefined/null");
+					if(typeof rawUser === "undefined" || rawUser === null)
+						throw new Error("rawUser is undefined/null");
 
-					debugger;
+					//debugger;
 
 					this.user = FirebaseSyncController.getUser(rawUser.uid);
 					var diagramsFB = FirebaseSyncController.getUserDiagrams(rawUser.uid);
@@ -58,7 +58,7 @@ angular.module('d3-uml-modeler.uml-workspace')
 					
 					diagramsFB.on('value', function(snapshot)
 					{
-						debugger;
+						//debugger;
 						if(self.isSaving === false)
 						{
 							var diagrams = snapshot.val();
@@ -68,16 +68,14 @@ angular.module('d3-uml-modeler.uml-workspace')
 							{
 								self.model.clearChildren();
 
-								// self.$scope.$apply(function() {
-									_.each(diagrams, function(diagramJSON) {
-										var modelDiagram = UmlModelAbstractFactory.createModelHierarchy(diagramJSON);
-										self.model.addElement(modelDiagram);
-									});
-								// });
+								console.log("WorkspaceController::initWorkspaceModel constructing workspace model tree");
+
+								_.each(diagrams, function(diagramJSON) {
+									var modelDiagram = UmlModelAbstractFactory.createModelHierarchy(diagramJSON);
+									self.model.addElement(modelDiagram);
+								});
 							}
 						}
-
-						// this.model.children = $rootScope.modelUser.diagrams;
 					});
 
 				},
@@ -122,7 +120,6 @@ angular.module('d3-uml-modeler.uml-workspace')
 
 				sync: function()
 				{
-					debugger;
 					var workspaceJSON = this.model.toJSON();
 
 					this.isSaving = true;

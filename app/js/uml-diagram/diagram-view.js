@@ -4,49 +4,6 @@ angular.module("d3-uml-modeler.uml-diagram")
 	.factory("DiagramView", ["BaseView", "Constants", "_", function(BaseView, Constants, _){
 		return BaseView.extend({
 
-//DONE
-//0-	implement a selection system, with a dictionary of registered
-//		classifiers by GUIDs. it'll be based on selection events
-//		and listeners
-
-//DONE
-//This scenario will allow us to select several classifiers :
-//1-	notify children with this rect & the rawSVG.
-//2-	check the intersection.
-//3-	if it intersects with a classifier's rect, the classifier will be
-//		selected.
-
-//DONE
-//resize a classifier
-//1-	listen to mouseDown on each resizer handler.
-//2-	fire an event to the diagram when the mouseDown event is triggered.
-//3-	add the mouseMove listener in order the update the size of the resizer.
-//4-	on the mouse up remove the mouseMove listener an notify the classifier
-//		so it can resize itself to the resizer size.
-
-//DONE
-//this scenario will allow us to group the selected classifiers.
-//0-	add a selection group in the svg above all classifiers.
-//1-	listen for the selection events triggered by classifiers.
-//2-	each time that a classifier is selected,
-//		add it to the selection group (verify the coordinates)
-//		- if the coordinates are wrong, use some math and fix it.
-//3- remove all classifiers' individual drag behaviors.
-//4- add a drag behavior on the selection group.
-
-//ABANDONED
-//this scenario will allow us to deselect a seleced classifier.
-//1-	in the diagram, listen to the deselect event.
-//2-	when a classifier is deselected, remove it from the selection group.
-//3-	notify it so it can re-activate its drag behavior.
-//4-	position it if its coordinates are wrong.
-
-//DONE
-//this scenario will allow us to deselect all selected classifiers
-//(when the user clicks on the diagram white space)
-//1-	fire an event "deselect-all" to all selected classifiers.
-//2-	do the previous scenario.
-
 			classifiersContainer	: null,
 			rawSVG								: null,
 			svg										: null,
@@ -207,8 +164,7 @@ angular.module("d3-uml-modeler.uml-diagram")
 						.attr("x", box.x)
 						.attr("y", box.y)
 						.attr("width", box.width)
-						.attr("height", box.height)
-						.attr("style", "fill:rgba(255,127,0,.3);");
+						.attr("height", box.height);
 				}
 			},
 
@@ -278,6 +234,9 @@ angular.module("d3-uml-modeler.uml-diagram")
 			{
 				this.selectorX1 = d3.mouse(this.rawSVG)[0];
 				this.selectorY1 = d3.mouse(this.rawSVG)[1];
+
+				//grab the selector to the top of all svg objects in the diagram
+				this.svgNode[0][0].appendChild(this.selector[0][0]);
 			},
 
 			onDragMove: function()

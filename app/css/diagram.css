@@ -23,6 +23,14 @@
 
 .selector
 {
-	fill: yellowgreen;
+	fill: rgba(10,200,200,.2);
+	stroke: rgb(10,200,200);
+	stroke-width: 0.5px;
 }
+
+
+.selection-group-classifier-rect{
+	fill: rgba(255,255,255,.1);
+}
+
 

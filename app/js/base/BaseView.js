@@ -77,26 +77,22 @@ angular.module("d3-uml-modeler.view")
 
 			marginTop: function()
 			{
-				var defaultMargin = 0;
-				return defaultMargin;
+				return 0;
 			},
 
 			marginRight: function()
 			{
-				var defaultMargin = 0;
-				return defaultMargin;
+				return 0;
 			},
 
 			marginBottom: function()
 			{
-				var defaultMargin = 0;
-				return defaultMargin;
+				return 0;
 			},
 
 			marginLeft: function()
 			{
-				var defaultMargin = 0;
-				return defaultMargin;
+				return 0;
 			},
 
 			/**
