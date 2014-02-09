@@ -11,8 +11,8 @@ new compressor.minify({
 
 	callback: function(err, min)
 	{
-		console.log("done !");
-		console.log(err);
+		console.log("Google Closure Compressor for JS Done !");
+		if(err) console.log(err);
 	}
 });
 
@@ -24,7 +24,8 @@ new compressor.minify({
 
 	callback: function(err, min)
 	{
-		console.log(err);
+		console.log("YUI Compressor for CSS Done !");
+		if(err) console.log(err);
 	}
 });
 
