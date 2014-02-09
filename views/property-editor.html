@@ -9,18 +9,9 @@
 			</select>
 			<!-- <input id="input-new-property-primitive-type" ng-show="newPropertyUmlType === 'other'" ng-model="newPropertyUmlType" type="text" placeholder="Type"/> -->
 		</div>
-
-<!-- 		<div>
-			<select ng-model="newPropertyElementType">
-				<option value="">Kind</option>
-				<option value="6">Constant</option>
-				<option value="7">Attribute</option>
-				<option value="8">Method</option>
-			</select>
-		</div> -->
-
 	</div>
-	<div id="div-button-add-porperty">
-		<button id="button-add-property"></button>
+	<div id="div-button-action-porperty">
+		<button id="button-save-property" ng-show="mode==='edit'" ng-click="saveProperty()"></button>
+		<button id="button-add-property" ng-show="mode==='add'" ng-click="addProperty()"></button>
 	</div>
 </div>
