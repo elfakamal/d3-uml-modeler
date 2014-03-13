@@ -9,6 +9,8 @@
 /app/lib/twitter-bootstrap/
 /app/lib/twitter-bootstrap/
 
+/app/js/mocks.js
+
 /logs/
 d3-uml-modeler.sublime-project
 d3-uml-modeler.sublime-workspace
