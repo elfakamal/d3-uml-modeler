@@ -1,0 +1,156 @@
+/******* diagram ******/
+
+#section-element-list-controller li
+{
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+
+li > button *
+{
+  display: block;
+}
+
+li > button
+{
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+li.diagram-icon > button
+{
+  width: 40px;
+  height: 40px;
+}
+
+li.diagram-icon > button span
+{
+  border: 1px solid white;
+  position: absolute;
+  background-color: white;
+
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+
+li.diagram-icon > button span:first-child
+{
+  background: none;
+  border-bottom: none;
+  width: 40%;
+  height: 40%;
+  left: 30%;
+  top: 30%;
+}
+
+li.diagram-icon > button span:nth-child(2)
+{
+  width: 40%;
+  height: 30%;
+  top: 15%;
+  left: 45%;
+}
+
+li.diagram-icon > button span:nth-child(3)
+{
+  width: 30%;
+  height: 20%;
+  top: 50%;
+  left: 12%;
+}
+
+li.diagram-icon > button span:last-child
+{
+  width: 30%;
+  height: 25%;
+  top: 55%;
+  left: 50%;
+}
+
+/******* class ******/
+
+
+li.class-icon > button
+{
+  width: 40%;
+  height: 40%;
+}
+
+li.class-icon > button > span
+{
+  background-color: #ffffff;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+
+  width: 100%;
+  height: 100%;
+}
+
+li.class-icon > button > span span:first-child
+{
+  height: 25%;
+  border-bottom: 1px solid rgb(10,200,200);
+}
+
+li.class-icon > button > span span:last-child
+{
+  height: 40%;
+  border-bottom: 1px solid rgb(10,200,200);
+}
+
+
+/******* interface ******/
+
+li.interface-icon > button
+{
+  width: 60%;
+  height: 40%;
+}
+
+li.interface-icon > button > span
+{
+  float: left;
+}
+
+li.interface-icon > button > span:first-child
+{
+  width: 1px;
+  height: 80%;
+  border-left: 1px solid white;
+  position: absolute;
+  top: 10%;
+}
+
+li.interface-icon > button span:nth-child(2)
+{
+  width: 40%;
+  height: 100%;
+}
+
+li.interface-icon > button > span:nth-child(2) > span
+{
+  width: 100%;
+  height: 50%;
+  border-bottom: 1px solid white;
+}
+
+li.interface-icon > button > span:last-child
+{
+  height: 80%;
+  width: 55%;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.4);
+  position: relative;
+  margin-top: 7%;
+}
+
+
+
+

@@ -8,64 +8,64 @@
 
 .classifier
 {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .classifier .classifier-foreign-object 
 {
-	border: 1px solid #eee;
-	border-top: 2px solid darkturquoise;
-	background-color: white;
+  border: 1px solid #eee;
+  border-top: 2px solid darkturquoise;
+  background-color: white;
 }
 
 .classifier-bg
 {
-	fill: #eee; /*rgba(255,127,0, .5);*/
+  fill: #eee; /*rgba(255,127,0, .5);*/
 }
 
 .classifier-title-bg
 {
-	fill: rgba(150,150,150, .5);
+  fill: rgba(150,150,150, .5);
 }
 
 .resizer-bg
 {
-	fill: rgba(100,100,100,.1);
+  fill: rgba(100,100,100,.1);
 }
 
 .resizer-handler
 {
-	fill: rgba(0,0,0,.5);
+  fill: rgba(0,0,0,.5);
 }
 
 .controls-picker button 
 {
-	border: 0px;
-	background-color: darkturquoise;
-	width: 30px;
-	height: 30px;
-	margin-bottom: 1px;
-	color: rgba(255,255,255,.8);
-	outline: none;
+  border: 0px;
+  background-color: darkturquoise;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 1px;
+  color: rgba(255,255,255,.8);
+  outline: none;
 }
 
 .button-edit-classifier:before,
 .button-add-association:before
 {
-	font-family: "Entypo";
-	font-size: 40px;
-	line-height: 26px;
-	margin-left: -2px;
+  font-family: "Entypo";
+  font-size: 40px;
+  line-height: 26px;
+  margin-left: -2px;
 }
 
 .button-edit-classifier:before
 {
-	content: '\2699';
+  content: '\2699';
 }
 
 .button-add-association:before
 {
-	content: '\1F56B';
+  content: '\1F56B';
 }
 
 
@@ -74,17 +74,17 @@
 
 .classifier .property-container
 {
-	/*background-color: darkturquoise;*/
-	width: 100%;
-	/*height: 100%;*/
+  /*background-color: darkturquoise;*/
+  width: 100%;
+  /*height: 100%;*/
 }
 
 .classifier .property-buttons > button
 {
-	display: none;
-	visibility: hidden;
-	width: 0px;
-	height: 0px;
+  display: none;
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
 }
 
 .classifier .uml-property {
@@ -94,23 +94,23 @@
 
 .classifier .property-name
 {
-	font-family: 'Exo 2', sans-serif;
-	font-size: 12px;
-	white-space: nowrap;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 12px;
+  white-space: nowrap;
 }
 
 .classifier .property-name .property-type
 {
-	color: rgba(0,0,0,0.4);
+  color: rgba(0,0,0,0.4);
 }
 
 .classifier .classifier-title
 {
-	background: #fefefe;
-	/*height: 30px;*/
-	/*line-height: 30px;*/
-	padding: 0px 5px;
-	border-bottom: 1px dotted #eee;
+  background: #fefefe;
+  /*height: 30px;*/
+  /*line-height: 30px;*/
+  padding: 0px 5px;
+  border-bottom: 1px dotted #eee;
 }
 
 

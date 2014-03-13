@@ -2,8 +2,8 @@
 
 angular.module('d3-uml-modeler.uml-workspace')
 .controller('WorkspaceController', [
-  "$scope", "_", "Notifications", "WorkspaceModelClass", "Constants", "UmlController", "UmlModelAbstractFactory", "$rootScope", "UserModel", "FirebaseSyncController",
-  function($scope, _, Notifications, WorkspaceModelClass, Constants, UmlController, UmlModelAbstractFactory, $rootScope, UserModel, FirebaseSyncController)
+  "$scope", "_", "Notifications", "WorkspaceModelClass", "Constants", "UmlController", "UmlModelAbstractFactory", "$rootScope", "UserModel", "FirebaseSyncController", "Mocks",
+  function($scope, _, Notifications, WorkspaceModelClass, Constants, UmlController, UmlModelAbstractFactory, $rootScope, UserModel, FirebaseSyncController, Mocks)
   {
     var WorkspaceController = UmlController.extend(
     {
@@ -33,12 +33,21 @@ angular.module('d3-uml-modeler.uml-workspace')
         this.$scope.sync = angular.bind(this, this.sync);
         this.$scope.username = "";
         this.$scope.userPicture = "";
+
+        //temporary chunk of code that allow us to get directly to the workspace,
+        //without twitter authorization
+        this.bootstrapWorkspaceModelTree(Mocks.RAW_USER.diagrams);
+        this.$scope.userPicture = Mocks.RAW_USER.thirdPartyUserData.profile_image_url;
+        this.$scope.username = "@" + Mocks.RAW_USER.username;
       },
 
       initListeners : function()
       {
-        $rootScope.$on("$firebaseSimpleLogin:login", angular.bind(this, this.onLoginSuccess));
-        $rootScope.$on("$firebaseSimpleLogin:logout", angular.bind(this, this.onLogout));
+        //temporarily commented binds, for development we don't have to get authorized.
+        //it's a waste of time.
+
+        // $rootScope.$on("$firebaseSimpleLogin:login", angular.bind(this, this.onLoginSuccess));
+        // $rootScope.$on("$firebaseSimpleLogin:logout", angular.bind(this, this.onLogout));
         this.notifications.addEventListener(Constants.DIAGRAM.EVENTS.ADD, this.addDiagram, this);
       },
 
@@ -47,37 +56,41 @@ angular.module('d3-uml-modeler.uml-workspace')
         if(typeof rawUser === "undefined" || rawUser === null)
           throw new Error("rawUser is undefined/null");
 
-        //debugger;
-
         this.user = FirebaseSyncController.getUser(rawUser.uid);
         var diagramsFB = FirebaseSyncController.getUserDiagrams(rawUser.uid);
         var self = this;
 
-        //if(!_.has($rootScope, "modelUser"))
         $rootScope.modelUser = new UserModel();
         
         diagramsFB.on('value', function(snapshot)
         {
-          //debugger;
           if(self.isSaving === false)
           {
             var diagrams = snapshot.val();
             $rootScope.modelUser.diagrams = diagrams;
-
-            if(!_.isEmpty(diagrams))
-            {
-              self.model.clearChildren();
-
-              console.log("WorkspaceController::initWorkspaceModel constructing workspace model tree");
-
-              _.each(diagrams, function(diagramJSON) {
-                var modelDiagram = UmlModelAbstractFactory.createModelHierarchy(diagramJSON);
-                self.model.addElement(modelDiagram);
-              });
-            }
+            self.bootstrapWorkspaceModelTree(diagrams);
           }
         });
 
+      },
+
+      /**
+       *
+       *
+       */
+      bootstrapWorkspaceModelTree: function(diagrams)
+      {
+        if(!_.isEmpty(diagrams))
+        {
+          var self = this;
+          self.model.clearChildren();
+          console.log("WorkspaceController::bootstrapWorkspaceModelTree constructing workspace model tree");
+
+          _.each(diagrams, function(diagramJSON) {
+            var modelDiagram = UmlModelAbstractFactory.createModelHierarchy(diagramJSON);
+            self.model.addElement(modelDiagram);
+          });
+        }
       },
 
       onLoginSuccess: function(e, rawUser)

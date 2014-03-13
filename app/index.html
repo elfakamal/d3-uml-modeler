@@ -1,114 +1,116 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>D3 UML Modeler</title>
+  <head>
+    <meta charset="utf-8">
+    <title>D3 UML Modeler</title>
 
  
-		<link href='http://fonts.googleapis.com/css?family=Exo+2:400,600,900,800,700,500' rel='stylesheet' type='text/css'/>
-		<link rel="stylesheet" href="lib/twitter-bootstrap/dist/css/bootstrap.min.css"/>
-		<link rel="stylesheet" href="lib/twitter-bootstrap/dist/css/bootstrap-theme.min.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Exo+2:400,600,900,800,700,500' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="lib/twitter-bootstrap/dist/css/bootstrap.min.css"/>
 
-		<link rel="stylesheet" href="css/aside.css"/>
-		<link rel="stylesheet" href="css/classifier.css"/>
-		<link rel="stylesheet" href="css/collection.css"/>
-		<link rel="stylesheet" href="css/content.css"/>
-		<link rel="stylesheet" href="css/editor.css"/>
-		<link rel="stylesheet" href="css/workspace.css"/>
-		<link rel="stylesheet" href="css/workspace-tree.css"/>
-		<link rel="stylesheet" href="css/diagram.css"/>
-		<link rel="stylesheet" href="css/fonts.css"/>
-		<link rel="stylesheet" href="css/footer.css"/>
-		<link rel="stylesheet" href="css/icons.css"/>
-		<link rel="stylesheet" href="css/main.css"/>
-		<link rel="stylesheet" href="css/menu.css"/>
-		<link rel="stylesheet" href="css/search.css"/>
-		<link rel="stylesheet" href="css/tour.css"/>
-		<link rel="stylesheet" href="css/uml-element-list.css"/>
+    <link rel="stylesheet" href="css/aside.css"/>
+    <link rel="stylesheet" href="css/classifier.css"/>
+    <link rel="stylesheet" href="css/collection.css"/>
+    <link rel="stylesheet" href="css/content.css"/>
+    <link rel="stylesheet" href="css/editor.css"/>
+    <link rel="stylesheet" href="css/workspace.css"/>
+    <link rel="stylesheet" href="css/workspace-tree.css"/>
+    <link rel="stylesheet" href="css/diagram.css"/>
+    <link rel="stylesheet" href="css/fonts.css"/>
+    <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="css/icons.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/menu.css"/>
+    <link rel="stylesheet" href="css/menu.icons.css"/>
+    <link rel="stylesheet" href="css/search.css"/>
+    <link rel="stylesheet" href="css/tour.css"/>
+    <link rel="stylesheet" href="css/uml-element-list.css"/>
 
 
-	</head>
-	<body ng-app="d3-uml-modeler">
+  </head>
+  <body ng-app="d3-uml-modeler">
 
     <!-- Add your site or application content here -->
     <section id="section-uml-modeler" ng-view="main"></section>
 
-		<!-- In production:
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-		-->
+    <!-- In production:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    -->
 
     <script src="http://static.firebase.com/v0/firebase.js"></script>
     <script src="https://cdn.firebase.com/js/simple-login/1.2.1/firebase-simple-login.js"></script>
-		<script src="lib/lodash/dist/lodash.underscore.min.js"></script>
+    <script src="lib/lodash/dist/lodash.underscore.min.js"></script>
 
-		<script src="lib/d3/d3.min.js"></script>
-		<script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/d3/d3.min.js"></script>
+    <script src="lib/jquery/jquery.min.js"></script>
 
-		<script src="lib/angular/angular.min.js"></script>
-		<script src="lib/angular/angular-route.min.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular/angular-route.min.js"></script>
 
     <script src="lib/angularfire/angularfire.min.js"></script>
 
-		<script src="lib/jquery.nestable.js"></script>
+    <script src="lib/jquery.nestable.js"></script>
 
-		<script src="lib/class.js"></script>
-		<script src="lib/util.js"></script>
+    <script src="lib/class.js"></script>
+    <script src="lib/util.js"></script>
 
-		<script src="js/base/BaseBootstrapModules.js"></script>
-		<script src="js/base/BaseView.js"></script>
-		<script src="js/base/underscore.js"></script>
-		<script src="js/app.js"></script>
-		<script src="js/constants.js"></script>
+    <script src="js/base/BaseBootstrapModules.js"></script>
+    <script src="js/base/BaseView.js"></script>
+    <script src="js/base/underscore.js"></script>
+    <script src="js/app.js"></script>
 
-		<script src="js/base/EventDispatcher.js"></script>
-		<script src="js/base/Notifications.js"></script>
-
-		<script src="js/base/BaseController.js"></script>
-		<script src="js/base/uml-model-abstract-factory.js"></script>
-		<script src="js/base/BaseModelElement.js"></script>
-		<script src="js/base/UmlController.js"></script>
-		<script src="js/base/BaseDirective.js"></script>
-
-		<script src="js/base/FirebaseSyncController.js"></script>
+    
 
 
+    <script src="js/mocks.js"></script>
+    <script src="js/constants.js"></script>
 
-		<script src="js/login/login-controller.js"></script>
-		<script src="js/login/user-model.js"></script>
+    <script src="js/base/EventDispatcher.js"></script>
+    <script src="js/base/Notifications.js"></script>
 
-		<script src="js/menu/menu-controller.js"></script>
+    <script src="js/base/BaseController.js"></script>
+    <script src="js/base/uml-model-abstract-factory.js"></script>
+    <script src="js/base/BaseModelElement.js"></script>
+    <script src="js/base/UmlController.js"></script>
+    <script src="js/base/BaseDirective.js"></script>
 
-		<script src="js/editor/property-editor.js"></script>
-		<script src="js/editor/classifier-editor.js"></script>
-		<script src="js/editor/editor-directive.js"></script>
+    <script src="js/base/FirebaseSyncController.js"></script>
 
-		<script src="js/uml-property/property-model.js"></script>
-		<script src="js/uml-property/property-directive.js"></script>
 
-		<script src="js/uml-classifier/classifier-model.js"></script>
-		<script src="js/uml-classifier/classifier-resizer.js"></script>
-		<script src="js/uml-classifier/classifier-picker.js"></script>
-		<script src="js/uml-classifier/classifier-view.js"></script>
-		<script src="js/uml-classifier/classifier-directive.js"></script>
-		<script src="js/uml-classifier/classifier-controller.js"></script>
+    <script src="js/login/login-controller.js"></script>
+    <script src="js/login/user-model.js"></script>
 
-		<script src="js/uml-diagram/diagram-model.js"></script>
-		<script src="js/uml-diagram/diagram-controller.js"></script>
-		<script src="js/uml-diagram/diagram-view.js"></script>
-		<script src="js/uml-diagram/diagram-directive.js"></script>
+    <script src="js/editor/property-editor.js"></script>
+    <script src="js/editor/classifier-editor.js"></script>
+    <script src="js/editor/editor-directive.js"></script>
 
-		<script src="js/workspace/workspace-model.js"></script>
-		<script src="js/workspace/workspace-navbar-directive.js"></script>
-		<script src="js/workspace/workspace-tree-directive.js"></script>
-		<script src="js/workspace/workspace-controller.js"></script>
+    <script src="js/uml-property/property-model.js"></script>
+    <script src="js/uml-property/property-directive.js"></script>
 
-		<script src="js/element-list/element-list-model.js"></script>
-		<script src="js/element-list/element-list-controller.js"></script>
+    <script src="js/uml-classifier/classifier-model.js"></script>
+    <script src="js/uml-classifier/classifier-resizer.js"></script>
+    <script src="js/uml-classifier/classifier-picker.js"></script>
+    <script src="js/uml-classifier/classifier-view.js"></script>
+    <script src="js/uml-classifier/classifier-directive.js"></script>
+    <script src="js/uml-classifier/classifier-controller.js"></script>
 
-		<script src="js/filters.js"></script>
-		<script src="js/directives.js"></script>
+    <script src="js/uml-diagram/diagram-model.js"></script>
+    <script src="js/uml-diagram/diagram-controller.js"></script>
+    <script src="js/uml-diagram/diagram-view.js"></script>
+    <script src="js/uml-diagram/diagram-directive.js"></script>
+
+    <script src="js/workspace/workspace-model.js"></script>
+    <script src="js/workspace/workspace-navbar-directive.js"></script>
+    <script src="js/workspace/workspace-tree-directive.js"></script>
+    <script src="js/workspace/workspace-controller.js"></script>
+
+    <script src="js/element-list/element-list-model.js"></script>
+    <script src="js/element-list/element-list-controller.js"></script>
+
+    <script src="js/filters.js"></script>
+    <script src="js/directives.js"></script>
  
 
 
-	</body>
+  </body>
 </html>

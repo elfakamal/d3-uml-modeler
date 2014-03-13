@@ -6,6 +6,8 @@ describe('base', function()
 {
 	beforeEach(function(){
 		module('d3-uml-modeler.base');
+		module('d3-uml-modeler.uml-abstract-factory');
+		module('d3-uml-modeler.constants');
 		module('d3-uml-modeler.notifications');
 	});
 
@@ -135,8 +137,11 @@ describe('base', function()
 			expect(params).toContain("mdr");
 			expect(params).not.toContain("lol");
 
+			spyOn(console, "warn");
 
-			expect(function(){eventDispatcher.dispatchEvent("kool");}).toThrow("no such registered event : kool");
+			expect(function(){eventDispatcher.dispatchEvent("kool");}).not.toThrow();
+			expect(console.warn).toHaveBeenCalled();
+			expect(console.warn).toHaveBeenCalledWith("no such registered event : kool");
     }]));
 
 	});
@@ -187,6 +192,14 @@ describe('base', function()
 				expect(typeof UmlModelAbstractFactory).toBe("object");
 				expect(typeof UmlModelAbstractFactory.createUmlModelElement).toBe("function");
 				expect(typeof UmlModelAbstractFactory.registerUmlModelElementClass).toBe("function");
+			}
+		]));
+		
+		it('T10: should contain a notifications list', inject(["UmlModelAbstractFactory", "Constants", "_",
+			function(UmlModelAbstractFactory, Constants, _) {
+
+				Constants.ELEMENT_TYPES_TO_NAMES["car"] = "Car";
+				Constants.ELEMENT_TYPES_TO_NAMES["bicycle"] = "Bicycle";
 
 				var CarClass = Class.extend({
 					name: "",
@@ -202,19 +215,23 @@ describe('base', function()
 				expect(typeof CarClass).toBe('function');
 				expect(typeof BicycleClass).toBe('function');
 
-				var factory = UmlModelAbstractFactory.registerUmlModelElementClass("car", CarClass);
-				expect(factory).toBe(UmlModelAbstractFactory);
-
+				UmlModelAbstractFactory.registerUmlModelElementClass("car", CarClass);
 				UmlModelAbstractFactory.registerUmlModelElementClass("bicycle", BicycleClass);
+
+				expect(function(){
+					UmlModelAbstractFactory.registerUmlModelElementClass("truck", {});
+				}).toThrow();
 
 				var modelCar = UmlModelAbstractFactory.createUmlModelElement("car", {name: "peugeot"});
 				expect(modelCar).toBeDefined();
 				expect(typeof modelCar).toBe("object");
+				expect(modelCar.GUID).toBeUndefined();
 				expect(modelCar.name).toBe("peugeot");
 
 				var modelBicycle = UmlModelAbstractFactory.createUmlModelElement("bicycle", {name: "BTwin"});
 				expect(modelBicycle).toBeDefined();
 				expect(typeof modelBicycle).toBe("object");
+				expect(modelBicycle.GUID).toBeUndefined();
 				expect(modelBicycle.name).toBe("BTwin");
 
 				//creating an object without passing arguments
@@ -226,13 +243,14 @@ describe('base', function()
 				var newCar = UmlModelAbstractFactory.createUmlModelElement("car");
 				expect(newCar).toBeDefined();
 				expect(typeof newCar).toBe("object");
+				expect(newCar.GUID).toBeUndefined();
 				expect(newCar.name).toBe("");
 
 				UmlModelAbstractFactory.unregisterUmlModelElementClass("bicycle", BicycleClass);
 				expect(_.isEmpty(UmlModelAbstractFactory.types)).toBe(false);
 				UmlModelAbstractFactory.unregisterUmlModelElementClass("car", CarClass);
 				expect(_.isEmpty(UmlModelAbstractFactory.types)).toBe(true);
-//				console.log("types : ", UmlModelAbstractFactory.types);
+				// console.log("types : ", UmlModelAbstractFactory.types);
 			}
 		]));
 

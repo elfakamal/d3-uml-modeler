@@ -2,8 +2,8 @@
 
 angular.module('d3-uml-modeler.login')
   .controller('LoginController', [
-    "$scope", "_", "UserModel", "Constants", "UmlController", "$firebaseSimpleLogin", "$rootScope", "FirebaseSyncController", 
-    function($scope, _, UserModel, Constants, UmlController, $firebaseSimpleLogin, $rootScope, FirebaseSyncController)
+    "$scope", "_", "UserModel", "Constants", "UmlController", "$firebaseSimpleLogin", "$rootScope", "FirebaseSyncController", "Mocks",
+    function($scope, _, UserModel, Constants, UmlController, $firebaseSimpleLogin, $rootScope, FirebaseSyncController, Mocks)
     {
       var LoginController = UmlController.extend(
       {
@@ -19,6 +19,9 @@ angular.module('d3-uml-modeler.login')
         {
           this.$scope.model = new UserModel();
           this.$scope.socialLogin = angular.bind(this, this.socialLogin);
+
+          //no more
+          this.$scope.model.uid = Mocks.RAW_USER.uid;
         },
 
         initListeners: function()
@@ -68,6 +71,7 @@ angular.module('d3-uml-modeler.login')
           this.isModelSynced = true;
           this.isPending = false;
 
+          //this line allow us to hide the splash screen, based if it's ng-show directive.
           this.$scope.model.uid = rawUser.uid;
         }
 

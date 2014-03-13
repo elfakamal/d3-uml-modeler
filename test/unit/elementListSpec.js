@@ -10,6 +10,7 @@ describe('element list test suite', function()
 		module('d3-uml-modeler.constants');
 		module('d3-uml-modeler.element-list');
 		module('d3-uml-modeler.base');
+		module('d3-uml-modeler.uml-abstract-factory');
 	});
 
 	it("should contain elements list items", inject([

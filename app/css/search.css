@@ -8,27 +8,32 @@
 
 /*#li-search-component #input-search:empty
 {
-	font-weight: 200;
+  font-weight: 200;
 }*/
+
+#section-search-component
+{
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
 
 #section-search-component form
 {
-	margin: 0px;
+  margin: 0px;
 }
 
 #section-search-component #input-search
 {
-	border: 0px;
-	border-bottom: 1px solid #eeeeee !important;
+  border: 0px;
+  border-bottom: 1px solid #eeeeee !important;
 
-	height: 40px;
-	width: 100%;
+  height: 40px;
+  width: 100%;
 
-	font-family: "Titillium Web", sans-serif;
-	font-weight: 400;
-	font-size: 18px;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
 
-	color: darkgray;
-	text-indent: 10px;
-	background-color: #fdfdfd;
+  color: darkgray;
+  text-indent: 10px;
+  background-color: #fdfdfd;
 }

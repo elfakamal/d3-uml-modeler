@@ -16,9 +16,9 @@ angular.module('d3-uml-modeler.filters', []).
 angular.module('d3-uml-modeler.filters', []).
   filter('propertyTypeFilter', ["_", function(_) {
     return function(propertyCollection, needle) {
-    	return _.filter(propertyCollection, function(property){
-    		return _.isEqual(needle, _.pick(property, _.keys(needle)));
-    	});
+      return _.filter(propertyCollection, function(property){
+        return _.isEqual(needle, _.pick(property, _.keys(needle)));
+      });
     }
   }]);
 

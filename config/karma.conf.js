@@ -4,6 +4,9 @@ module.exports = function(config){
 
     files : [
 
+      'app/lib/firebase/firebase.js',
+      'app/lib/firebase-simple-login/firebase-simple-login.js',
+
       'app/lib/lodash/dist/lodash.underscore.min.js',
       'app/lib/class.js',
       'app/lib/util.js',
@@ -11,6 +14,9 @@ module.exports = function(config){
       'app/lib/angular/angular.js',
       'app/lib/angular/angular-*.js',
       'test/lib/angular/angular-mocks.js',
+
+      'app/lib/angularfire/angularfire.js',
+
       'app/js/**/*.js',
       'test/unit/**/*.js'
     ],

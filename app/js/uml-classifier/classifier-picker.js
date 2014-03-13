@@ -1,86 +1,86 @@
 'use strict';
 
 angular.module("d3-uml-modeler.uml-classifier")
-	.factory("ClassifierPicker", ["BaseView", "Constants", "_", function(BaseView, Constants, _){
+  .factory("ClassifierPicker", ["BaseView", "Constants", "_", function(BaseView, Constants, _){
 
-		return BaseView.extend({
+    return BaseView.extend({
 
-			picker: null,
-			foreignObject: null,
-			classifierWidth: 0,
+      picker: null,
+      foreignObject: null,
+      classifierWidth: 0,
 
-			init: function($scope, element, config)
-			{
-				BaseView.prototype.init.call(this, $scope, element, config);
+      init: function($scope, element, config)
+      {
+        BaseView.prototype.init.call(this, $scope, element, config);
 
-				this.classifierWidth = this.config.width;
-				this.picker = d3.select(this.$el.parentNode).select(".controls-picker");
-				this.initForeignObject();
-			},
+        this.classifierWidth = this.config.width;
+        this.picker = d3.select(this.$el.parentNode).select(".controls-picker");
+        this.initForeignObject();
+      },
 
-			setClassifierWidth: function(width)
-			{
-				this.classifierWidth = width;
-				this.updateForeignObject();
-			},
-			
-			getPicker: function()
-			{
-				return this.picker;
-			},
+      setClassifierWidth: function(width)
+      {
+        this.classifierWidth = width;
+        this.updateForeignObject();
+      },
+      
+      getPicker: function()
+      {
+        return this.picker;
+      },
 
-			initForeignObject: function()
-			{
-				this.foreignObject = this.picker.append("foreignObject")
-					.attr("class", "picker-foreign-object");
+      initForeignObject: function()
+      {
+        this.foreignObject = this.picker.append("foreignObject")
+          .attr("class", "picker-foreign-object");
 
-				this.updateForeignObject();
-			},
+        this.updateForeignObject();
+      },
 
-			updateForeignObject: function()
-			{
-				this.picker.select(".picker-foreign-object")
-					.attr("x", this.classifierWidth)
-					.attr("y", 0)
-					.attr("width", 30)
-					.attr("height", 100)
-					.attr("style", "fill:turquoise");
-			},
+      updateForeignObject: function()
+      {
+        this.picker.select(".picker-foreign-object")
+          .attr("x", this.classifierWidth)
+          .attr("y", 0)
+          .attr("width", 30)
+          .attr("height", 100)
+          .attr("style", "fill:turquoise");
+      },
 
-			drawBase: function()
-			{
-				var pickerDiv = this.foreignObject.append("xhtml:div")
-					.style("position", "static");
+      drawBase: function()
+      {
+        var pickerDiv = this.foreignObject.append("xhtml:div")
+          .style("position", "static");
 
-				var addAttributeButton = pickerDiv.append("xhtml:button")
-					.attr("class", "button-edit-classifier")
-					.on("click", angular.bind(this, this.onEditClassifierClick));
-					//.text("+");
+        var addAttributeButton = pickerDiv.append("xhtml:button")
+          .attr("class", "button-edit-classifier")
+          .on("click", angular.bind(this, this.onEditClassifierClick));
+          //.text("+");
 
-				var addAssociationButton = pickerDiv.append("xhtml:button")
-					.attr("class", "button-add-association");
-					// .text("#");
-			},
+        var addAssociationButton = pickerDiv.append("xhtml:button")
+          .attr("class", "button-add-association");
+          // .text("#");
+      },
 
-			onEditClassifierClick: function()
-			{
-				this.notifications.notify("edit-classifier", this.$scope.model);
-			},
+      onEditClassifierClick: function()
+      {
+        this.notifications.notify("edit-classifier", this.$scope.model);
+      },
 
-			showPicker: function()
-			{
-				this.picker.transition()
-					.attr("transform", "translate(" + [0, 0] + ")")
-					.attr("disabled", null);
-			},
+      showPicker: function()
+      {
+        this.picker.transition()
+          .attr("transform", "translate(" + [0, 0] + ")")
+          .attr("disabled", null);
+      },
 
-			hidePicker: function()
-			{
-				this.picker.transition()
-					.attr("transform", "translate(" + [-30, 0] + ")")
-					.attr("disabled", "true");
-			}
+      hidePicker: function()
+      {
+        this.picker.transition()
+          .attr("transform", "translate(" + [-30, 0] + ")")
+          .attr("disabled", "true");
+      }
 
-		});
+    });
 
-	}]);
+  }]);

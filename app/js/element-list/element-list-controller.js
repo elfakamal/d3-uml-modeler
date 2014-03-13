@@ -2,64 +2,79 @@
 
 angular.module("d3-uml-modeler.element-list")
 .controller("ElementListController", [
-	"$scope", "_", "Notifications", "ElementList", "Constants", "UmlController",
-	function($scope, _, Notifications, ElementList, Constants, UmlController)
-	{
-		var ElementListController = UmlController.extend(
-		{
-			/**
-			 * List of the Uml Elements that can be added to the workspace or the diagram.
-			 */
-			elementList: null,
+  "$scope", "_", "Notifications", "ElementList", "Constants", "UmlController",
+  function($scope, _, Notifications, ElementList, Constants, UmlController)
+  {
+    var ElementListController = UmlController.extend(
+    {
+      /**
+       * List of the Uml Elements that can be added to the workspace or the diagram.
+       */
+      elementList: null,
 
-			init: function($scope, _, Notifications, ElementList, Constants)
-			{
-				this.elementList = ElementList;
+      init: function($scope, _, Notifications, ElementList, Constants)
+      {
+        this.elementList = ElementList;
 
-				/**
-				 * initialize the scope data.
-				 */
-				this.initScope = function()
-				{
-					this.$scope.children = _.sortBy(_.values(this.elementList.children), "index", this);
-					this.$scope.addElementClick = angular.bind(this, this.addElementClick);
-				};
+        /**
+         * initialize the scope data.
+         */
+        this.initScope = function()
+        {
+          this.$scope.children = _.sortBy(_.values(this.elementList.children), "index", this);
+          this.$scope.addElementClick = angular.bind(this, this.addElementClick);
+        };
 
-				/**
-				 * this functiontrigger an event based on what element have been clicked
-				 * on the view.
-				 */
-				this.addElementClick = function(elementListItem)
-				{
-					if(typeof elementListItem === "undefined" || elementListItem === null)
-						throw new Error("ElementListController::addElementClick => Element is undefined");
+        /**
+         * this functiontrigger an event based on what element have been clicked
+         * on the view.
+         */
+        this.addElementClick = function(elementListItem)
+        {
+          if(typeof elementListItem === "undefined" || elementListItem === null)
+            throw new Error("ElementListController::addElementClick => Element is undefined");
 
-					//loop through categories to implicitly treat each one.
-					var categories = [Constants.DIAGRAM, Constants.CLASSIFIER, Constants.ASSOCIATION];
+          //extracting the elementListItem using its name.
+          if( typeof elementListItem === "string" && elementListItem != "" && 
+              _.has(Constants.NAME_TO_ELEMENT_TYPE, elementListItem))
+          {
+            var type = Constants.NAME_TO_ELEMENT_TYPE[elementListItem];
+            var elements = _.filter(this.$scope.children, function(child) {
+              return child.type == type;
+            });
 
-					_.each(categories, function(category)
-					{
-						//this event is triggered to the workspace or the diagram controller,
-						//based on element type.
-						if(_.values(category.TYPES).indexOf(elementListItem.type) >= 0)
-							this.notifications.notify(category.EVENTS.ADD, elementListItem.type);
+            if(elements.length > 0)
+              elementListItem = elements[0];
+            else 
+              throw new Error("ElementListController::addElementClick => No such element in the list");
+          }
 
-					}, this);
-				};
+          //loop through categories to implicitly treat each one.
+          var categories = [Constants.DIAGRAM, Constants.CLASSIFIER, Constants.ASSOCIATION];
 
-				/**
-				 * this have to be the last thing to do in the constructor.
-				 */
-				UmlController.prototype.init.call(this, $scope, Notifications);
+          _.each(categories, function(category)
+          {
+            //this event is triggered to the workspace or the diagram controller,
+            //based on element type.
+            if(_.values(category.TYPES).indexOf(elementListItem.type) >= 0)
+              this.notifications.notify(category.EVENTS.ADD, elementListItem.type);
 
-				/**
-				 * If there is something to do with the Notifications object,
-				 * it needs to be done Here (after call of the super constructor).
-				 */
-			}
-		});
+          }, this);
+        };
 
-		return new ElementListController($scope, _, Notifications, ElementList, Constants);
+        /**
+         * this have to be the last thing to do in the constructor.
+         */
+        UmlController.prototype.init.call(this, $scope, Notifications);
 
-	}
+        /**
+         * If there is something to do with the Notifications object,
+         * it needs to be done Here (after call of the super constructor).
+         */
+      }
+    });
+
+    return new ElementListController($scope, _, Notifications, ElementList, Constants);
+
+  }
 ]);
