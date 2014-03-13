@@ -21,7 +21,7 @@ angular.module('d3-uml-modeler.login')
           this.$scope.socialLogin = angular.bind(this, this.socialLogin);
 
           //no more
-          this.$scope.model.uid = Mocks.RAW_USER.uid;
+          //this.$scope.model.uid = Mocks.RAW_USER.uid;
         },
 
         initListeners: function()

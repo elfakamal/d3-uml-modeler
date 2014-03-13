@@ -21,19 +21,6 @@
 
     <workspace-navbar></workspace-navbar>
 
-
-
-
-    <section id="section-first-modal" ng-controller="LoginController" ng-show="model.uid=='' || model.uid==null" class="center-container">
-      <section id="section-twitter-button" class="absolute-center">
-        <div id="div-app-name-1">UML Modeler</div>
-        <div id="div-app-name-2">UML Modeler</div>
-        <div id="div-app-name-3">UML Modeler</div>
-
-        <button id="button-twitter-signin" ng-click="socialLogin('twitter')">Sign in with Twitter</button>
-      </section>
-    </section>
-
     <div id="workspace-component">
       <div ng-repeat="diagram in diagrams" ng-controller="ClassDiagramController" ng-init="initModel(diagram)">
         <diagram id="diagram-{{diagram.GUID}}" name="{{diagram.name}}" guid="{{diagram.GUID}}">
@@ -44,5 +31,16 @@
 
     <editor element-type-name="classifier"></editor>
 
+  </section>
+</section>
+
+
+<section id="section-first-modal" ng-controller="LoginController" ng-show="model.uid=='' || model.uid==null" class="center-container">
+  <section id="section-twitter-button" class="absolute-center">
+    <div id="div-app-name-1">UML Modeler</div>
+    <div id="div-app-name-2">UML Modeler</div>
+    <div id="div-app-name-3">UML Modeler</div>
+
+    <button id="button-twitter-signin" ng-click="socialLogin('twitter')">Sign in with Twitter</button>
   </section>
 </section>

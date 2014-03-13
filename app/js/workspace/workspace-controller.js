@@ -36,9 +36,9 @@ angular.module('d3-uml-modeler.uml-workspace')
 
         //temporary chunk of code that allow us to get directly to the workspace,
         //without twitter authorization
-        this.bootstrapWorkspaceModelTree(Mocks.RAW_USER.diagrams);
-        this.$scope.userPicture = Mocks.RAW_USER.thirdPartyUserData.profile_image_url;
-        this.$scope.username = "@" + Mocks.RAW_USER.username;
+        // this.bootstrapWorkspaceModelTree(Mocks.RAW_USER.diagrams);
+        // this.$scope.userPicture = Mocks.RAW_USER.thirdPartyUserData.profile_image_url;
+        // this.$scope.username = "@" + Mocks.RAW_USER.username;
       },
 
       initListeners : function()
@@ -46,8 +46,8 @@ angular.module('d3-uml-modeler.uml-workspace')
         //temporarily commented binds, for development we don't have to get authorized.
         //it's a waste of time.
 
-        // $rootScope.$on("$firebaseSimpleLogin:login", angular.bind(this, this.onLoginSuccess));
-        // $rootScope.$on("$firebaseSimpleLogin:logout", angular.bind(this, this.onLogout));
+        $rootScope.$on("$firebaseSimpleLogin:login", angular.bind(this, this.onLoginSuccess));
+        $rootScope.$on("$firebaseSimpleLogin:logout", angular.bind(this, this.onLogout));
         this.notifications.addEventListener(Constants.DIAGRAM.EVENTS.ADD, this.addDiagram, this);
       },
 
@@ -71,7 +71,6 @@ angular.module('d3-uml-modeler.uml-workspace')
             self.bootstrapWorkspaceModelTree(diagrams);
           }
         });
-
       },
 
       /**

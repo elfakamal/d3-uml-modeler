@@ -23,8 +23,6 @@ var jsFiles = [
 	"app/js/login/login-controller.js",
 	"app/js/login/user-model.js",
 
-	"app/js/menu/menu-controller.js",
-
 	"app/js/editor/property-editor.js",
 	"app/js/editor/classifier-editor.js",
 	"app/js/editor/editor-directive.js",
