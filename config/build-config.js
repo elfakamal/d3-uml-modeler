@@ -63,12 +63,14 @@ var cssFiles = [
 	"app/css/editor.css",
 	"app/css/workspace.css",
 	"app/css/workspace-tree.css",
+	
 	"app/css/diagram.css",
 	"app/css/fonts.css",
 	"app/css/footer.css",
 	"app/css/icons.css",
 	"app/css/main.css",
 	"app/css/menu.css",
+	"app/css/menu.icons.css",
 	"app/css/search.css",
 	"app/css/tour.css",
 	"app/css/uml-element-list.css"

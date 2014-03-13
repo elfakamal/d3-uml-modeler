@@ -7,7 +7,7 @@ var buildConfig = require("../config/build-config.js");
 new compressor.minify({
 	type: 'gcc',
 	fileIn: buildConfig.buildJSFiles,
-	fileOut: 'build/d3.uml.modeler.js',
+	fileOut: 'public/js/d3.uml.modeler.js',
 
 	callback: function(err, min)
 	{
@@ -20,7 +20,7 @@ new compressor.minify({
 new compressor.minify({
 	type: 'yui-css',
 	fileIn: buildConfig.buildCSSFiles,
-	fileOut: 'build/d3.uml.modeler.css',
+	fileOut: 'public/css/d3.uml.modeler.css',
 
 	callback: function(err, min)
 	{
