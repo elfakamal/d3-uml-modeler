@@ -1,63 +1,46 @@
 
 <section id="middle-container" ng-controller="WorkspaceController">
 
-	<aside id="aside-side-pane">
-		<header id="header" ng-controller="MenuCtrl">
-			<nav id="nav-menu-component" uml-component="menu"></nav>
-		</header>
+  <aside id="aside-side-pane">
+    <header id="header">
+      <nav id="nav-menu-component" uml-component="logo"></nav>
+    </header>
 
-		<section id="section-search-component" uml-component="search"></section>
+    <section id="section-search-component" uml-component="search"></section>
 
-		<!--		<section id="section-diagram-list-controller" ng-controller="ElementListController">
-					<section id="section-uml-model-list" uml-component="uml-diagram-list" entity="diagram"></section>
-				</section>-->
+    <!--    <section id="section-diagram-list-controller" ng-controller="ElementListController">
+          <section id="section-uml-model-list" uml-component="uml-diagram-list" entity="diagram"></section>
+        </section>-->
 
-		<workspace-tree></workspace-tree>
-	</aside>
-
-
-
-	<section id="section-content">
-
-		<section id="section-element-list-controller" ng-controller="ElementListController">
-			<section id="section-uml-model-list" uml-component="uml-model-list"></section>
-		</section>
-
-		<section id="section-global-control">
-			<div id="div-sync-button">
-				<button id="button-sync" ng-click="sync()">Sync</button>
-			</div>
-			<div id="div-social-account">
-				<button id="button-social-account"><span id="span-profile-image">
-					<img id="img-profile-image" ng-src="{{userPicture}}"/>
-  				</span>{{username}}</button>
-			</div>
-		</section>
-
-
-		
-		<section id="section-first-modal" ng-controller="LoginController" ng-show="model.uid=='' || model.uid==null" class="center-container">
-			<section id="section-twitter-button" class="absolute-center">
-				<div id="div-app-name-1">UML Modeler</div>
-				<div id="div-app-name-2">UML Modeler</div>
-				<div id="div-app-name-3">UML Modeler</div>
-
-				<button id="button-twitter-signin" ng-click="socialLogin('twitter')">Sign in with Twitter</button>
-			</section>
-		</section>
+    <workspace-tree></workspace-tree>
+  </aside>
 
 
 
-		<div id="workspace-component">
-			<!--<workspace-navbar></workspace-navbar>-->
-			<div ng-repeat="diagram in diagrams" ng-controller="ClassDiagramController" ng-init="initModel(diagram)">
-				<diagram id="diagram-{{diagram.GUID}}" name="{{diagram.name}}" guid="{{diagram.GUID}}">
+  <section id="section-content">
 
-				</diagram>
-			</div>
-		</div>
+    <workspace-navbar></workspace-navbar>
 
-		<editor element-type-name="classifier"></editor>
+    <div id="workspace-component">
+      <div ng-repeat="diagram in diagrams" ng-controller="ClassDiagramController" ng-init="initModel(diagram)">
+        <diagram id="diagram-{{diagram.GUID}}" name="{{diagram.name}}" guid="{{diagram.GUID}}">
 
-	</section>
+        </diagram>
+      </div>
+    </div>
+
+    <editor element-type-name="classifier"></editor>
+
+  </section>
+</section>
+
+
+<section id="section-first-modal" ng-controller="LoginController" ng-show="model.uid=='' || model.uid==null" class="center-container">
+  <section id="section-twitter-button" class="absolute-center">
+    <div id="div-app-name-1">UML Modeler</div>
+    <div id="div-app-name-2">UML Modeler</div>
+    <div id="div-app-name-3">UML Modeler</div>
+
+    <button id="button-twitter-signin" ng-click="socialLogin('twitter')">Sign in with Twitter</button>
+  </section>
 </section>

@@ -1,28 +1,28 @@
 <svg>
-	<g id="g-global-container" class="first-g">
-		<rect class="diagram-bg"></rect>
-		<g class="grid"></g>
-		<g class="classifiers-container" id="g-classifiers-container-{{diagram.GUID}}">
+  <g id="g-global-container" class="first-g">
+    <rect class="diagram-bg"></rect>
+    <g class="grid"></g>
+    <g class="classifiers-container" id="g-classifiers-container-{{diagram.GUID}}">
 
-			<g 	ng-repeat="classifier in classifiers"
-					ng-controller="ClassifierController"
-					ng-init="initModel(classifier)"
-					class="classifier"
-					id="g-classifier-controller-{{classifier.GUID}}">
+      <g  ng-repeat="classifier in classifiers"
+          ng-controller="ClassifierController"
+          ng-init="initModel(classifier)"
+          class="classifier"
+          id="g-classifier-controller-{{classifier.GUID}}">
 
-				<g class="controls-picker"></g>
+        <g class="controls-picker"></g>
 
-				<g	classifier classifier-type="{{classifier.type}}"
-					 id="g-classifier-{{classifier.GUID}}"
-					 guid="{{classifier.GUID}}"></g>
+        <g  classifier classifier-type="{{classifier.type}}"
+           id="g-classifier-{{classifier.GUID}}"
+           guid="{{classifier.GUID}}"></g>
 
-				<g class="resizer">
-					<rect class="resizer-bg"></rect>
-				</g>
-			</g>
+        <g class="resizer">
+          <rect class="resizer-bg"></rect>
+        </g>
+      </g>
 
-			<rect class="selector"></rect>
-			<g class="selectionGroup"></g>
-		</g>
-	</g>
+      <rect class="selector"></rect>
+      <g class="selectionGroup"></g>
+    </g>
+  </g>
 </svg>
