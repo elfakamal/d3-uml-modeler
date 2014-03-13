@@ -10,6 +10,7 @@ var jsFiles = [
 
 	"app/js/base/underscore.js",
 	"app/js/app.js",
+	"app/js/empty-mocks.js",
 	"app/js/constants.js",
 	"app/js/base/EventDispatcher.js",
 	"app/js/base/Notifications.js",
